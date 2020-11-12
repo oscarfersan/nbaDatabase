@@ -1,0 +1,30 @@
+{"_id":{"$oid":"5fad337de697e0a40a05539f"},"name":"Atlanta Hawks","wins":0.0,"defeat":0.0,"conference":"East","division":"SouthEast","coach":"Lloyd Pierce"}
+{"_id":{"$oid":"5fad3414e697e0a40a0553a0"},"name":"Charlotte Hornets","wins":0.0,"defeat":0.0,"conference":"East","division":"SouthEast","coach":"James Borrego"}
+{"_id":{"$oid":"5fad34f3e697e0a40a0553a1"},"name":"Miami Heat","wins":0.0,"defeat":0.0,"conference":"East","division":"SouthEast","coach":"Erik Spoelstra"}
+{"_id":{"$oid":"5fad34f3e697e0a40a0553a2"},"name":"Orlando Magic","wins":0.0,"defeat":0.0,"conference":"East","division":"SouthEast","coach":"Steve Clifford"}
+{"_id":{"$oid":"5fad34f3e697e0a40a0553a3"},"name":"Washington Wizards","wins":0.0,"defeat":0.0,"conference":"East","division":"SouthEast","coach":"Scott Brooks"}
+{"_id":{"$oid":"5fad3666e697e0a40a0553a4"},"name":"Chicago Bulls","wins":0.0,"defeat":0.0,"conference":"East","division":"Central","coach":"Billy Donovan"}
+{"_id":{"$oid":"5fad3666e697e0a40a0553a5"},"name":"Cleveland Cavaliers","wins":0.0,"defeat":0.0,"conference":"East","division":"Central","coach":"John-Blair Bickerstaff"}
+{"_id":{"$oid":"5fad3666e697e0a40a0553a6"},"name":"Detroit Pistons","wins":0.0,"defeat":0.0,"conference":"East","division":"Central","coach":"Dwane Casey"}
+{"_id":{"$oid":"5fad3666e697e0a40a0553a7"},"name":"Indiana Pacers","wins":0.0,"defeat":0.0,"conference":"East","division":"Central","coach":"Nate Bjorkgren"}
+{"_id":{"$oid":"5fad3666e697e0a40a0553a8"},"name":"Milwaukee Bucks","wins":0.0,"defeat":0.0,"conference":"East","division":"Central","coach":"Mike Budenholzer"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553a9"},"name":"Boston Celtics","wins":0.0,"defeat":1.0,"conference":"East","division":"Atlantic","coach":"Brad Stevens"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553aa"},"name":"Brooklyn Nets","wins":0.0,"defeat":0.0,"conference":"East","division":"Atlantic","coach":"Steve Nash"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553ab"},"name":"New York Knicks","wins":0.0,"defeat":0.0,"conference":"East","division":"Atlantic","coach":"Tom Thibodeau"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553ac"},"name":"Toronto Raptors","wins":0.0,"defeat":0.0,"conference":"East","division":"Atlantic","coach":"Nick Nurse"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553ad"},"name":"Denver Nuggets","wins":0.0,"defeat":0.0,"conference":"West","division":"NorthWest","coach":"Michael Malone"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553ae"},"name":"Minnesota Timberwolves","wins":0.0,"defeat":0.0,"conference":"West","division":"NorthWest","coach":"Ryan Saunders"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553af"},"name":"Oklahoma City Thunder","wins":0.0,"defeat":0.0,"conference":"West","division":"NorthWest","coach":"Mark Daigneault"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553b0"},"name":"Portland Trail Blazers","wins":0.0,"defeat":0.0,"conference":"West","division":"NorthWest","coach":"Terry Stotts"}
+{"_id":{"$oid":"5fad374ae697e0a40a0553b1"},"name":"Utah Jazz","wins":0.0,"defeat":0.0,"conference":"West","division":"NorthWest","coach":"Quin Snyder"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b2"},"name":"Golden State Warriors","wins":0.0,"defeat":0.0,"conference":"West","division":"Pacific","coach":"Steve Kerr"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b3"},"name":"Los Angeles Lakers","wins":0.0,"defeat":0.0,"conference":"West","division":"Pacific","coach":"Frank Vogel"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b4"},"name":"Los Angeles Clippers","wins":0.0,"defeat":0.0,"conference":"West","division":"Pacific","coach":"Tyrone Lue"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b5"},"name":"Phoenix Suns","wins":0.0,"defeat":0.0,"conference":"West","division":"Pacific","coach":"Monty Williams"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b6"},"name":"Sacramento Kings","wins":0.0,"defeat":0.0,"conference":"West","division":"Pacific","coach":"Luke Walton"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b7"},"name":"Dallas Mavericks","wins":0.0,"defeat":0.0,"conference":"West","division":"SouthWest","coach":"Rick Carlisle"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b8"},"name":"Houston Rockets","wins":0.0,"defeat":0.0,"conference":"West","division":"SouthWest","coach":"Stephen Silas"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553b9"},"name":"Memphis Grizzlies","wins":0.0,"defeat":0.0,"conference":"West","division":"SouthWest","coach":"Taylor Jenkins"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553ba"},"name":"New Orleans Pelicans","wins":0.0,"defeat":0.0,"conference":"West","division":"SouthWest","coach":"Stan Van Gundy"}
+{"_id":{"$oid":"5fad3871e697e0a40a0553bb"},"name":"San Antonio Spurs","wins":0.0,"defeat":0.0,"conference":"West","division":"SouthWest","coach":"Gregg Popovich"}
+{"_id":{"$oid":"5fad38d3e697e0a40a0553bc"},"name":"Philadelphia 76ers","wins":0.0,"defeat":0.0,"conference":"East","division":"Atlantic","coach":"Doc Rivers"}
