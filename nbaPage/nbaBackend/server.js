@@ -10,6 +10,7 @@ const port = process.env.PORT || 6060
 //midd
 app.use(cors())
 app.use(express.json())
+app.set('view engine','ejs')
 //db config
 const mongoURI = 'mongodb+srv://oscarfersan:QHZa5qJ532c2NSKg@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'
 MongoClient.connect(mongoURI, {
@@ -20,17 +21,23 @@ MongoClient.connect(mongoURI, {
     console.log('Connected')
     const db = client.db('nba')
     const teamCollection = db.collection('team')
-    app.get('/conference/east', (req, res) => {
-        const cursor = db.collection('team').find({conference:"East"}).sort({wins:-1,defeat:1,division:-1}).toArray()
+    app.get('/',(req,res)=>{
+        res.render('index.ejs',{})
+    })
+    app.get('/conference', (req, res) => {
+        const conf = req.query.conference
+        const cursor = db.collection('team').find({conference:conf}).sort({wins:-1,defeat:1,division:-1}).toArray()
         .then(results =>{
-            res.send(results)
+            //res.send(results)
+            res.render('conference.ejs',{teams:results})
         })
         .catch(error=>console.error(error))
     })
-    app.get('/conference/west', (req, res) => {
-        const cursor = db.collection('team').find({conference:"West"}).sort({wins:-1,defeat:1,division:-1}).toArray()
+    app.get('/division', (req, res) => {
+        const div = req.query.division
+        const cursor = db.collection('team').find({division:div}).sort({wins:-1,defeat:1,division:-1}).toArray()
         .then(results =>{
-            res.send(results)
+            res.render('conference.ejs',{teams:results})
         })
         .catch(error=>console.error(error))
     })

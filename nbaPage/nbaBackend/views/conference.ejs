@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>NBA Database 20/21</title>
+    </head>
+    <body>
+        <h2>Teams</h2>
+        <ul class="teams">
+            <% for(var i=0;i<teams.length;i++){%>
+                <li class="team">
+                    <img src=<%=teams[i].thumbnail%> />
+                    <span><%=i+1%>.-</span>
+                    <span><%=teams[i].name%></span>
+                    <span>Wins:<%=teams[i].wins%></span>
+                    <span>/Defeat:<%=teams[i].defeat%></span>
+                </li>
+            <% } %>
+        </ul>
+    </body>
+</html>
