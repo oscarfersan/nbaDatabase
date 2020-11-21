@@ -10,6 +10,7 @@ const port = process.env.PORT || 6060
 //midd
 app.use(cors())
 app.use(express.json())
+app.use(express.static('CSS Files/'))
 app.set('view engine','ejs')
 //db config
 const mongoURI = 'mongodb+srv://oscarfersan:QHZa5qJ532c2NSKg@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'

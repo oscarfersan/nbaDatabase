@@ -1,20 +1,49 @@
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>NBA Database 20/21</title>
-    </head>
-    <body>
-        <h2>Teams</h2>
-        <ul class="teams">
-            <% for(var i=0;i<teams.length;i++){%>
-                <li class="team">
-                    <img src=<%=teams[i].thumbnail%> />
-                    <span><%=i+1%>.-</span>
-                    <span><%=teams[i].name%></span>
-                    <span>Wins:<%=teams[i].wins%></span>
-                    <span>/Defeat:<%=teams[i].defeat%></span>
-                </li>
-            <% } %>
-        </ul>
-    </body>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>NBA Database 20/21</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>
+                Pos
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Wins
+            </th>
+            <th>
+                Defeat
+            </th>
+        </tr>
+        <% for(var i=0;i<teams.length;i++){%>
+        <tr> 
+            <td>
+            <%=i+1%>.-
+            </td>
+            <td class="container">
+                <img src=<%=teams[i].thumbnail%> />
+                <div class="overlay">
+                    <div class="text">
+                    <%=teams[i].name%>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <%=teams[i].wins%>
+            </td>
+            <td>
+                <%=teams[i].defeat%>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+
 </html>
