@@ -1,9 +1,7 @@
-//import 
-import express from 'express'
-import mongoose from 'mongoose'
-import Pusher from 'Pusher'
-import cors from 'cors'
-import MongoClient from 'mongodb'
+//import
+const express = require('express')
+const MongoClient = require('mongodb')
+const cors = require('cors')
 //app config
 const app = express()
 const port = process.env.PORT || 6060

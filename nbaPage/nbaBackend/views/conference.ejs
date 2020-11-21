@@ -7,41 +7,28 @@
 </head>
 
 <body>
-    <table id="g-table">
-
-            <thead>
-            <tr>
-                <th>
-                    Pos
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Wins
-                </th>
-                <th>
-                    Defeat
-                </th>
-            </tr>
+    <table class="g-table">
+        <thead>
         </thead>
         <tbody>
+            <td>
             <% for(var i=0;i<teams.length;i++){%>
-            <tr>
-                <td>
-                    <%=i+1%>.-
-                </td>
-                <td>
-                    <img src=<%=teams[i].thumbnail%> />
-                </td>
-                <td>
-                    <%=teams[i].wins%>
-                </td>
-                <td>
-                    <%=teams[i].defeat%>
-                </td>
-            </tr>
+            <div class="card">
+                <!--Start a div-->
+                <img class="card-img" src=<%=teams[i].thumbnail %>>
+                <!--add source and class-->
+                <div class="card-body">
+                    <!-- Keep class names relative to what you are doing-->
+                    <h5 class="card-title"><%=teams[i].name%></h5>
+                    <div class="card-info">
+                        <h6>W/L:<%=teams[i].wins%>:<%=teams[i].defeat%></h6>
+                    </div>
+                    <!-- Add link
+                   with href and put text for button in-->
+                </div>
+            </div>
             <% } %>
+        </td>
         </tbody>
     </table>
 </body>
