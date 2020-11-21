@@ -7,42 +7,42 @@
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>
-                Pos
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Wins
-            </th>
-            <th>
-                Defeat
-            </th>
-        </tr>
-        <% for(var i=0;i<teams.length;i++){%>
-        <tr> 
-            <td>
-            <%=i+1%>.-
-            </td>
-            <td class="container">
-                <img src=<%=teams[i].thumbnail%> />
-                <div class="overlay">
-                    <div class="text">
-                    <%=teams[i].name%>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <%=teams[i].wins%>
-            </td>
-            <td>
-                <%=teams[i].defeat%>
-            </td>
-        </tr>
-        <% } %>
+    <table id="g-table">
+
+            <thead>
+            <tr>
+                <th>
+                    Pos
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Wins
+                </th>
+                <th>
+                    Defeat
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0;i<teams.length;i++){%>
+            <tr>
+                <td>
+                    <%=i+1%>.-
+                </td>
+                <td>
+                    <img src=<%=teams[i].thumbnail%> />
+                </td>
+                <td>
+                    <%=teams[i].wins%>
+                </td>
+                <td>
+                    <%=teams[i].defeat%>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
     </table>
 </body>
 
