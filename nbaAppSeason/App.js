@@ -5,7 +5,7 @@ import TeamClassification from './TeamClassification';
 export default function App() {
   return (
     <View style={styles.container}>
-      <TeamClassification></TeamClassification>
+      <TeamClassification/>
       <StatusBar style="auto" />
     </View>
   );

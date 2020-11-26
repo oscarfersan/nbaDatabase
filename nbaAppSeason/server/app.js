@@ -2,13 +2,14 @@ const express = require('express')
 const app = express()
 const body_parser = require('body-parser')
 const mongoose = require('mongoose')
-
+app.use(body_parser.json())
 const port = process.env.PORT || 6060
-const mongoURI = 'mongodb+srv://regular_user:IXQMdbUQX4SKTkAQ@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'
+const mongoURI = 'mongodb+srv://oscarfersan:POKEMON99@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'
 require('./Team')
 //listen
 const Team = mongoose.model("team");
 mongoose.connect(mongoURI,{
+    useCreateIndex: true,
     useNewUrlParser:true,
     useUnifiedTopology: true
 })
@@ -19,7 +20,8 @@ app.get('/',(req,res)=>{
     Team.find({}).then(data=>{
         res.send(data)
     }).catch(err=>{
-        console.log(err)
+        console.error(err)
     })
 })
-app.listen(port, () => console.log(`listening on localhost:${port}`))
+app.listen(6060, () => {console.log(`listening on localhost:${port}`)
+})

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const TeamSchema = new mongoose.Schema({
+var TeamSchema = mongoose.Schema({
     name:String,
     wins: Number,
     defeat: Number,
@@ -10,4 +10,4 @@ const TeamSchema = new mongoose.Schema({
     thumbnail: String
 })
 
-mongoose.model("team",TeamSchema)
+mongoose.model('team',TeamSchema,'team');
