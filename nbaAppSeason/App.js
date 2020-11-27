@@ -11,7 +11,7 @@ export default function App() {
       <Text>.....</Text>
       <TeamClassification/>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({

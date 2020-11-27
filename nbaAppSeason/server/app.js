@@ -8,8 +8,8 @@ const mongoURI = 'mongodb+srv://oscarfersan:POKEMON99@nbadb.cp5yj.mongodb.net/nb
 require('./Team')
 //listen
 const Team = mongoose.model("team");
+app.use(express.json)
 mongoose.connect(mongoURI,{
-    useCreateIndex: true,
     useNewUrlParser:true,
     useUnifiedTopology: true
 })

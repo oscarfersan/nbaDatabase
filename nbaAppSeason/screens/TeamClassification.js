@@ -7,11 +7,12 @@ const TeamClassification=()=>{
     const [data,setData] = useState({hits: []});
     const [isLoading, setLoading] = useState(true);
     
-    useEffect(async () => {
-        const result = await axios(
-            'http://192.168.43.69:6060'
-        );
-        setData(result.data)        
+    useEffect(() => {
+               fetch('http:192.168.43.183:6060/')
+               .then(res=>res.json())
+               .then(results=>{
+                   setData(results)
+               })
       }, []);
     const renderList = ((item)=>{
         return(
@@ -22,29 +23,23 @@ const TeamClassification=()=>{
                 source={{uri:item.thumbnail}}
                 />
                 <Text style={styles.text}>{item.name}</Text>
+                <Text>Hola</Text>
             </View>
             </Card>
         )
     })
     return(
-        // <View>
-        //     {/* {isLoading ? <ActivityIndicator/> : ( */}
-        //     <FlatList
-        //     data={data}
-        //     renderItem={({item})=>{
-        //         return renderList(item)
-        //     }}
-        //     keyExtractor={item=>`${item.name}`}
-        //     />
-        //     {/* )} */}
-        // </View>
-            <ul>
-              {data.hits.map(item => (
-                <li key={item.objectID}>
-                  <a href={item.url}>{item.title}</a>
-                </li>
-              ))}
-            </ul>
+        <View>
+            {/* {isLoading ? <ActivityIndicator/> : ( */}
+            <FlatList
+            data={data}
+            renderItem={({item})=>{
+                return renderList(item)
+            }}
+            keyExtractor={item=>`${item._id}`}
+            />
+            {/* )} */}
+        </View>
     )
     
 }
