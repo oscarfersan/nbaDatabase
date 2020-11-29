@@ -3,7 +3,7 @@ const app = express()
 const body_parser = require('body-parser')
 const mongoose = require('mongoose')
 app.use(body_parser.json())
-const port = process.env.PORT || 6060
+const port = process.env.PORT || 3000
 const mongoURI = 'mongodb+srv://oscarfersan:POKEMON99@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'
 require('./Team')
 //listen
@@ -23,5 +23,5 @@ app.get('/',(req,res)=>{
         console.error(err)
     })
 })
-app.listen(6060, () => {console.log(`listening on localhost:${port}`)
+app.listen(port, () => {console.log(`listening on localhost:${port}`)
 })
