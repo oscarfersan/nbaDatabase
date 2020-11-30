@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View , FlatList, ImageBackground} from 'react-native';
 import { Card } from 'react-native-paper'
 
 const Draft = () =>{
-    const data = [
-        {id:1, name:"Anthony Edwards", pos:"Es", team:"Minnesota Timberwolves", thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4594268.png"},
-        {id:2, name:"James Wiseman", pos:"P",team:"Golden State Warriors",thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4594268.png"},
-        {id:3, name:"LaMelo Ball", pos:"BA",team:"Charlotte Hornets",thumbnail:"https://hoopshype.com/wp-content/uploads/sites/92/2019/11/i_a7_72_41_lamelo-ball.png"},
-        {id:4, name:"Patrick Williams", pos:"ES",team:"Chicago Bulls",thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4431687.png"},
-    ]
-
+    // const data = [
+    //     {id:1, name:"Anthony Edwards", pos:"Es", team:"Minnesota Timberwolves", thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4594268.png"},
+    //     {id:2, name:"James Wiseman", pos:"P",team:"Golden State Warriors",thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4594268.png"},
+    //     {id:3, name:"LaMelo Ball", pos:"BA",team:"Charlotte Hornets",thumbnail:"https://hoopshype.com/wp-content/uploads/sites/92/2019/11/i_a7_72_41_lamelo-ball.png"},
+    //     {id:4, name:"Patrick Williams", pos:"ES",team:"Chicago Bulls",thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4431687.png"},
+    // ]
+    const [data,setData] = useState(null)
+    const fetchURL = 'http:192.168.43.183:6060'
+        
+    
+    useEffect(()=>{
+        fetch(`${fetchURL}/draft`)
+        .then((res)=>res.json())
+        .then((data)=>setData(data))
+        .catch((error)=>{
+            console.error(error);
+        });
+    },[])
     const renderList = (item) =>{
         return(
             <Card style={styles.mycard}>
