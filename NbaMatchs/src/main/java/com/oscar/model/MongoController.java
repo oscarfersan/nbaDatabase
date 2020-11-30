@@ -69,17 +69,18 @@ public class MongoController {
 		.append("date",new Date(System.currentTimeMillis()-24*60*60*1000));
 		match.insertOne(insertion);
 	}
-	public void createPlayer(String fullName, int age, float heigh,String team, String pos, String year, int draft_number,
-			String thumbnail) {
+	public void createPlayer(String fullName, double weight, double heigh,String team, String pos, String year, int draft_number,
+			String university,String thumbnail) {
 		MongoCollection<Document> player = this.nba.getCollection("player");
 		Document insertion = new Document("_id",new ObjectId());
 		insertion.append("name", fullName)
-		.append("age", age)
+		.append("weight", weight)
 		.append("heigh", heigh)
 		.append("team", team)
 		.append("position", pos)
 		.append("draft_year",year)
 		.append("draft_number",draft_number)
+		.append("university", university)
 		.append("thumbnail",thumbnail);
 		player.insertOne(insertion);
 	}

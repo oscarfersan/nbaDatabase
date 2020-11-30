@@ -30,7 +30,7 @@ const Draft = () =>{
                         source={{ uri: item.thumbnail}} />
                     <View style={{ marginLeft: 10 }}>
                         <Text style={styles.text}>{item.name}</Text>
-                        <Text style={styles.text}>{item.pos}</Text>
+                        <Text style={styles.text}>{item.position}</Text>
                     </View>
                 </View>
             </Card>
@@ -47,7 +47,7 @@ const Draft = () =>{
                 renderItem={({item})=>{
                     return renderList(item)
                 }}
-                keyExtractor={item=>`${item.id}`}
+                keyExtractor={item=>`${item._id}`}
             />
         </View>
         </ImageBackground>

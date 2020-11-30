@@ -11,7 +11,7 @@ public class NbaDB {
     private MongoClient client;
     private MongoDatabase db;
     private final MongoClientURI uri = new MongoClientURI(
-            "mongodb+srv://oscarfersan:QHZa5qJ532c2NSKg@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority");
+            "mongodb+srv://oscarfersan:POKEMON99@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority");
     public NbaDB() { //Constructor of the class
         this.client = new MongoClient(uri);
         this.db = client.getDatabase("nba");
