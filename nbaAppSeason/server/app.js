@@ -18,15 +18,25 @@ mongoose.connect(mongoURI,{
 mongoose.connection.on("connected",()=>{
     console.log("Success!")
 })
-app.get('/',(req,res)=>{
-    Team.find({}).sort({wins:-1,defeat:1}).then(data=>{
+app.get('/conference',(req,res)=>{
+    const cnf = req.query.conference
+    Team.find({conference:cnf}).sort({wins:-1,defeat:1}).then(data=>{
+        res.send(data)
+    }).catch(err=>{
+        console.error(err)
+    })
+})
+app.get('/division',(req,res)=>{
+    const cnf = req.query.division
+    Team.find({division:cnf}).sort({wins:-1,defeat:1}).then(data=>{
         res.send(data)
     }).catch(err=>{
         console.error(err)
     })
 })
 app.get('/draft',(req,res)=>{
-    Player.find({draft_year:"2020"}).sort({draft_number:-1}).then(data=>{
+    const year = req.query.draft_year
+    Player.find({draft_year:year}).sort({draft_number:1}).then(data=>{
         res.send(data)
     }).catch(err=>{
         console.error(err)

@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View, FlatList, ImageBackground } from 'react-native';
+import { Image, StyleSheet, Text, View, FlatList, ImageBackground, Alert } from 'react-native';
 import { Card } from 'react-native-paper'
 
-const TeamList = () => {
-    // const data = [
-    //     { id: 1, name: "Los Angeles Lakers", wins: 0, defeat: 0, thumbnail: "https://toppng.com/uploads/preview/lakers-logo-png-los-angeles-lakers-11562884650hddhrc18oe.png" },
-    //     { id: 2, name: "Los Angeles Clippers", wins: 0, defeat: 0, thumbnail: "https://logos-download.com/wp-content/uploads/2016/04/LA_Clippers_logo_logotype_emblem.png" },
-    //     { id: 3, name: "Orlando Magic", wins: 0, defeat: 0, thumbnail: "https://assets.stickpng.com/images/58419b7da6515b1e0ad75a51.png" },
-    // ]
+const TeamList = (props) => {
     const [data,setData] = useState(null)
     const fetchURL = 'http:192.168.43.183:6060'
+    const cnf = props.route.params.group
+    const type = props.route.params.type
     useEffect(()=>{
-        fetch(`${fetchURL}/`)
+        fetch(`${fetchURL}/${type}?${type}=${cnf}`)
         .then((res)=>res.json())
         .then((data)=>setData(data))
         .catch((error)=>{

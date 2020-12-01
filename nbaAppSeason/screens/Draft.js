@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View , FlatList, ImageBackground} from 'react-native';
+import { Image, StyleSheet, Text, View , FlatList, ImageBackground, Alert} from 'react-native';
 import { Card } from 'react-native-paper'
 
-const Draft = () =>{
-    // const data = [
-    //     {id:1, name:"Anthony Edwards", pos:"Es", team:"Minnesota Timberwolves", thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4594268.png"},
-    //     {id:2, name:"James Wiseman", pos:"P",team:"Golden State Warriors",thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4594268.png"},
-    //     {id:3, name:"LaMelo Ball", pos:"BA",team:"Charlotte Hornets",thumbnail:"https://hoopshype.com/wp-content/uploads/sites/92/2019/11/i_a7_72_41_lamelo-ball.png"},
-    //     {id:4, name:"Patrick Williams", pos:"ES",team:"Chicago Bulls",thumbnail:"https://a.espncdn.com/combiner/i?img=/i/headshots/mens-college-basketball/players/full/4431687.png"},
-    // ]
+const Draft = (props) =>{
     const [data,setData] = useState(null)
     const fetchURL = 'http:192.168.43.183:6060'
-        
+    const year = props.route.params.year
     
     useEffect(()=>{
-        fetch(`${fetchURL}/draft`)
+        fetch(`${fetchURL}/draft?draft_year=${year}`)
         .then((res)=>res.json())
         .then((data)=>setData(data))
         .catch((error)=>{
@@ -29,8 +23,15 @@ const Draft = () =>{
                         style={styles.myImage}
                         source={{ uri: item.thumbnail}} />
                     <View style={{ marginLeft: 10 }}>
-                        <Text style={styles.text}>{item.name}</Text>
-                        <Text style={styles.text}>{item.position}</Text>
+                        <View style={styles.sub_card}>
+                            <Text style={styles.text}>{item.name}</Text>
+                            <Text style={{marginLeft:10,fontSize:18}}>#{item.draft_number}</Text>
+                        </View>
+                        <Text style={styles.sub_text}>{item.position}/{item.weight}kgs/{item.heigh}m</Text>
+                            <Text style={styles.sub_text}>{item.team}/{item.university}</Text>
+                        <View style={styles.sub_card}>
+                            
+                        </View>
                     </View>
                 </View>
             </Card>
@@ -57,6 +58,12 @@ const styles = StyleSheet.create({
     mycard: {
         margin: 5,
 
+    },
+    sub_card:{
+        flexDirection:"row"
+    },
+    sub_text:{
+        fontSize:13,
     },
     cardView: {
         flexDirection: "row",

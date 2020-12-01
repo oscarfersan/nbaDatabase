@@ -1,23 +1,17 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View, FlatList, ImageBackground, Alert } from 'react-native';
-import { Button, Card } from 'react-native-paper'
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, View , FlatList, ImageBackground} from 'react-native';
+import {Button, Card } from 'react-native-paper'
 
-const Home = (props) => {
-    return (
-        <View style={styles.homeContainer}>
+const DraftScreen = (props) =>{
+    return(
+    <View style={styles.homeContainer}>
             <ImageBackground source={{ 
             uri: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=749&q=80" }} 
             style={styles.back_image}>
                 <Card style={styles.myCard}>
                     <View>
-                        <Button mode="contained" onPress={()=> props.navigation.navigate("TeamMenu")}>
-                            Classifications
-                </Button>
-                        <Button onPress={()=> props.navigation.navigate("DraftScreen")}>
-                            Draft
-                </Button>
-                <Button onPress={()=> props.navigation.navigate("Match")}>
-                            Matches
+                        <Button onPress={()=> props.navigation.navigate("Draft",{year:'2020'})}>
+                            Draft 2020/2021
                 </Button>
                     </View>
                 </Card>
@@ -55,4 +49,5 @@ const styles = StyleSheet.create({
         borderRadius: 30
     }
 })
-export default Home
+
+export default DraftScreen
