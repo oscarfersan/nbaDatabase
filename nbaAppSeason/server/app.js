@@ -4,13 +4,13 @@ const body_parser = require('body-parser')
 const mongoose = require('mongoose')
 app.use(body_parser.json())
 const port = process.env.PORT || 6060
-const mongoURI = 'mongodb+srv://oscarfersan:POKEMON99@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'
+const mongoURI = 'mongodb+srv://regular_user:1dXHEbrelbxl4kQf@nbadb.cp5yj.mongodb.net/nba?retryWrites=true&w=majority'
 require('./Team')
 require('./Player')
 //listen
 const Team = mongoose.model("team");
 const Player = mongoose.model("player");
-//app.use(express.json)
+
 mongoose.connect(mongoURI,{
     useNewUrlParser:true,
     useUnifiedTopology: true

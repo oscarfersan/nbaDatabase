@@ -10,18 +10,26 @@ import Draft from './screens/Draft';
 import Match from './screens/Match';
 import DraftScreen from './screens/DraftScreen';
 import TeamMenu from './screens/TeamMenu';
+import Player from './screens/Player';
 const Stack = createStackNavigator();
 
+const myOptions = {
+  headerTintColor:"white",
+  headerStyle:{
+    backgroundColor:"#006aff"
+  }
+}
 function App() {
   return (
     <View style={styles.container}>
        <Stack.Navigator>
-        <Stack.Screen name={"Home"} component={Home}/>
-        <Stack.Screen name={"TeamMenu"} component ={TeamMenu}/>
-        <Stack.Screen name={"TeamsList"} component ={TeamsList}/>
-        <Stack.Screen name={"DraftScreen"} component ={DraftScreen}/>
-        <Stack.Screen name={"Draft"} component ={Draft}/>
-        <Stack.Screen name={"Match"} component ={Match}/>
+        <Stack.Screen name={"Home"} component={Home} options={{...myOptions,title:"Home"}}/>
+        <Stack.Screen name={"TeamMenu"} component ={TeamMenu} options={{...myOptions,title:"Classifications"}}/>
+        <Stack.Screen name={"TeamsList"} component ={TeamsList} options={{...myOptions,title:"Classifications"}}/>
+        <Stack.Screen name={"DraftScreen"} component ={DraftScreen} options={{...myOptions,title:"Draft classes"}}/>
+        <Stack.Screen name={"Draft"} component ={Draft} options={{...myOptions,title:"Draft"}}/>
+        <Stack.Screen name={"Player"} component ={Player} options={{...myOptions,title:"Player"}}/>
+        <Stack.Screen name={"Match"} component ={Match} options={{...myOptions,title:"Match Info"}}/>
        </Stack.Navigator>
     </View>
   )

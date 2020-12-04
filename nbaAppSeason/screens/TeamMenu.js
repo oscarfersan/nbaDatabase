@@ -11,43 +11,43 @@ const TeamMenu = (props) => {
                 style={styles.back_image}>
                 <View style={{ flexDirection: "row" }}>
 
-                        <View style={{ flexDirection: "column" }}>
+                        <View style={{ flexDirection: "column", marginBottom:10}}>
                             <Card style={styles.myCard}>
-                                <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'East', type: 'conference' })}>
+                                <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'East', type: 'conference' })}>
                                     East conference
                 </Button>
                             </Card>
                             <Card style={styles.myCard}>
-                                <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'Atlantic', type: 'division' })}>
+                                <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'Atlantic', type: 'division' })}>
                                     Atlantic
                 </Button>
                             </Card>
                             <Card style={styles.myCard}>
-                            <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'Central', type: 'division' })}>
+                            <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'Central', type: 'division' })}>
                                 Central
                 </Button>
                 </Card>
                 <Card style={styles.myCard}>
-                            <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'SouthEast', type: 'division' })}>
+                            <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'SouthEast', type: 'division' })}>
                                 SouthEast
                 </Button></Card>
                         </View>
                     
                         <View style={{ flexDirection: "column" }}>
                         <Card style={styles.myCard}>
-                            <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'West', type: 'conference' })}>
+                            <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'West', type: 'conference' })}>
                                 West conference
                 </Button></Card>
                 <Card style={styles.myCard}>
-                            <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'SouthWest', type: 'division' })}>
+                            <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'SouthWest', type: 'division' })}>
                                 SouthWest
                 </Button></Card>
                 <Card style={styles.myCard}>
-                            <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'NorthWest', type: 'division' })}>
+                            <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'NorthWest', type: 'division' })}>
                                 NorthWest
                 </Button></Card>
                 <Card style={styles.myCard}>
-                            <Button onPress={() => props.navigation.navigate("TeamsList", { group: 'Pacific', type: 'division' })}>
+                            <Button mode="outlined" onPress={() => props.navigation.navigate("TeamsList", { group: 'Pacific', type: 'division' })}>
                                 Pacific
                 </Button></Card>
                         </View>
@@ -72,18 +72,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flex: 1,
         resizeMode: 'contain',
-    },
-    cardView: {
-        flexDirection: "row",
-        padding: 6
-    },
-    text: {
-        fontSize: 18,
-    },
-    myImage: {
-        width: 60,
-        height: 60,
-        borderRadius: 30
     }
 })
 

@@ -13,10 +13,10 @@ const Home = (props) => {
                         <Button mode="contained" onPress={()=> props.navigation.navigate("TeamMenu")}>
                             Classifications
                 </Button>
-                        <Button onPress={()=> props.navigation.navigate("DraftScreen")}>
+                        <Button mode="outlined" onPress={()=> props.navigation.navigate("DraftScreen")}>
                             Draft
                 </Button>
-                <Button onPress={()=> props.navigation.navigate("Match")}>
+                <Button mode="contained" onPress={()=> props.navigation.navigate("Match")}>
                             Matches
                 </Button>
                     </View>
