@@ -17,7 +17,7 @@ const TeamList = (props) => {
     },[])
     const renderList = ((item) => {
         return (
-            <Card style={styles.mycard}>
+            <Card style={styles.mycard} onPress={()=>props.navigation.navigate("TeamInfo", { team: item })}>
                 <View style={styles.cardView}>
                     <Image
                         style={styles.myImage}

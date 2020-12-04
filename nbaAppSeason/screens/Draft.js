@@ -34,11 +34,6 @@ const Draft = (props) => {
                         </View>
                     </View>
 
-                    {/* <Button style={{
-                        position:"absolute",
-                        marginRight:"0%"
-                    }} icon="clipboard-plus" onTouchStart={() => props.navigation.navigate("Player", { player: item })} /> */}
-
                 </View>
             </Card>
         )
