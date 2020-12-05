@@ -70,7 +70,7 @@ public class MongoController {
 		match.insertOne(insertion);
 	}
 	public void createPlayer(String fullName, double weight, double heigh,String team, String pos, String year, int draft_number,
-			String university,String thumbnail) {
+			Double salary,String university,String thumbnail) {
 		MongoCollection<Document> player = this.nba.getCollection("player");
 		Document insertion = new Document("_id",new ObjectId());
 		insertion.append("name", fullName)
@@ -80,6 +80,7 @@ public class MongoController {
 		.append("position", pos)
 		.append("draft_year",year)
 		.append("draft_number",draft_number)
+                .append("salary", salary)
 		.append("university", university)
 		.append("thumbnail",thumbnail);
 		player.insertOne(insertion);

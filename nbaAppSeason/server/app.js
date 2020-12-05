@@ -45,9 +45,8 @@ app.get('/draft',(req,res)=>{
 app.get('/coach',(req,res)=>{
     const f_name = req.query.f_name
     const s_name = req.query.s_name
-    const name = f_name.concat(' ',s_name)
-    Coach.find({name:name}).then(data=>{
-        console.log(data)
+    const c_name = f_name.concat(' ',s_name)
+    Coach.find({name:c_name}).then(data=>{
         res.send(data)
     }).catch(err=>{
         console.error(err)

@@ -35,7 +35,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="heigh_field" min="-2" pref="68" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="age_field" max="32767" attributes="0"/>
+                                      <Component id="weight_field" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -59,6 +59,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="salary_field" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="university_field" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -78,7 +80,7 @@
               <Component id="name_field" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="age_field" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="weight_field" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="heigh_field" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -92,7 +94,10 @@
                   <Component id="draft_number" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="university_field" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="university_field" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="salary_field" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="thumbnail_text" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -105,7 +110,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="name_field">
     </Component>
-    <Component class="javax.swing.JTextField" name="age_field">
+    <Component class="javax.swing.JTextField" name="weight_field">
     </Component>
     <Component class="javax.swing.JTextField" name="heigh_field">
     </Component>
@@ -151,6 +156,11 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="university_field">
+    </Component>
+    <Component class="javax.swing.JTextField" name="salary_field">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Salary"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

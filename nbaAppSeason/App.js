@@ -30,10 +30,10 @@ function App() {
         <Stack.Screen name={"TeamMenu"} component ={TeamMenu} options={{...myOptions,title:"Classifications"}}/>
         <Stack.Screen name={"TeamsList"} component ={TeamsList} options={{...myOptions,title:"Classifications"}}/>
         <Stack.Screen name={"TeamInfo"} component ={TeamInfo} options={{...myOptions,title:"Information"}}/>
+        <Stack.Screen name={"Coach"} component ={Coach} options={{...myOptions,title:"Coach"}}/>
         <Stack.Screen name={"DraftScreen"} component ={DraftScreen} options={{...myOptions,title:"Draft classes"}}/>
         <Stack.Screen name={"Draft"} component ={Draft} options={{...myOptions,title:"Draft"}}/>
         <Stack.Screen name={"Player"} component ={Player} options={{...myOptions,title:"Player"}}/>
-        <Stack.Screen name={"Coach"} component ={Coach} options={{...myOptions,title:"Coach"}}/>
         <Stack.Screen name={"Match"} component ={Match} options={{...myOptions,title:"Match Info"}}/>
        </Stack.Navigator>
     </View>

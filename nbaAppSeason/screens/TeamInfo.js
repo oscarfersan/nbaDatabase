@@ -4,7 +4,6 @@ import { Card } from 'react-native-paper'
 
 const TeamInfo = (props) => {
     const team = props.route.params.team
-    var coachName = team.coach.split(" ")
     return (
         <View style={styles.background_view}>
             <Image style={styles.logo_image} source={{ uri: team.thumbnail }} />
@@ -15,7 +14,7 @@ const TeamInfo = (props) => {
                     <Text style={styles.data}>{team.name}</Text>
                     </View>
                 </Card>
-                <Card style={styles.card_data} onPress={() => props.navigation.navigate("Coach", {name:coachName})}>
+                <Card style={styles.card_data} onPress={() => props.navigation.navigate("Coach", {name:team.coach})}>
                     <View style={{ flexDirection: "row" }}>
                     <Text>Coach</Text>
                     <Text style={styles.data}>{team.coach}</Text>
