@@ -13,6 +13,7 @@ import TeamMenu from './screens/TeamMenu';
 import Player from './screens/Player';
 import TeamInfo from './screens/TeamInfo';
 import Coach from './screens/Coach';
+import Game from './screens/Game';
 
 
 const Stack = createStackNavigator();
@@ -35,6 +36,7 @@ function App() {
         <Stack.Screen name={"Draft"} component ={Draft} options={{...myOptions,title:"Draft"}}/>
         <Stack.Screen name={"Player"} component ={Player} options={{...myOptions,title:"Player"}}/>
         <Stack.Screen name={"Match"} component ={Match} options={{...myOptions,title:"Match Info"}}/>
+        <Stack.Screen name={"Game"} component ={Game} options={{...myOptions,title:"What´s my contract?"}}/>
        </Stack.Navigator>
     </View>
   )

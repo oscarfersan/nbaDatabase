@@ -6,7 +6,7 @@ const TeamMenu = (props) => {
     return (
         <View style={styles.homeContainer}>
             <ImageBackground source={{
-                uri: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=749&q=80"
+                uri: "https://images.pexels.com/photos/2291004/pexels-photo-2291004.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             }}
                 style={styles.back_image}>
                 <View style={{ flexDirection: "row" }}>

@@ -6,9 +6,9 @@ const Home = (props) => {
     return (
         <View style={styles.homeContainer}>
             <ImageBackground source={{ 
-            uri: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=749&q=80" }} 
+            uri: "https://images.pexels.com/photos/3189980/pexels-photo-3189980.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" }} 
             style={styles.back_image}>
-                <Card style={styles.myCard}>
+                <Card style={styles.mycard}>
                     <View>
                         <Button mode="contained" onPress={()=> props.navigation.navigate("TeamMenu")}>
                             Classifications
@@ -18,6 +18,9 @@ const Home = (props) => {
                 </Button>
                 <Button mode="contained" onPress={()=> props.navigation.navigate("Match")}>
                             Matches
+                </Button>
+                <Button mode="outlined" onPress={()=> props.navigation.navigate("Game")}>
+                            What´s my contract?
                 </Button>
                     </View>
                 </Card>
@@ -31,28 +34,14 @@ const styles = StyleSheet.create({
         resizeMode: "stretch",
     },
     mycard: {
-        margin: 5,
-        position:'absolute'
-
+        marginTop:"39%",
+        marginBottom:"auto"
     },
     back_image: {
         width: null,
         height: null,
-        justifyContent: 'center',
         flex: 1,
         resizeMode: 'contain',
-    },
-    cardView: {
-        flexDirection: "row",
-        padding: 6
-    },
-    text: {
-        fontSize: 18,
-    },
-    myImage: {
-        width: 60,
-        height: 60,
-        borderRadius: 30
     }
 })
 export default Home

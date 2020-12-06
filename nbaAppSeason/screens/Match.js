@@ -21,12 +21,6 @@ const Match = () => {
             thumbnail_1: "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fnba%2F500%2Forl.png",
             thumbnail_2: "https://assets.stickpng.com/images/58419bd7a6515b1e0ad75a57.png",
             sc1: 107, sc2: 120
-        },
-        {
-            id: 4, t1: "Brooklyn Nets", t2: "Chicago Bulls",
-            thumbnail_1: "https://assets.stickpng.com/images/58419c7ba6515b1e0ad75a62.png",
-            thumbnail_2: "https://assets.stickpng.com/images/58419cf6a6515b1e0ad75a6b.png",
-            sc1: 127, sc2: 95
         }
     ]
 
@@ -35,18 +29,13 @@ const Match = () => {
             <Card style={styles.mycard}>
                 <View style={styles.cardView}>
                     <Image
-                        style={styles.myImage}
+                        style={styles.myImage_visit}
                         source={{ uri: item.thumbnail_1 }} />
-                    <View style={{ marginLeft: 10 }}>
-                        <View style={styles.header}>
-                            <Text style={styles.text}>{item.t1}-{item.t2}</Text>
-                        </View>
-                        <View style={styles.result}>
-                            <Text styles={styles.text_res}>{item.sc1}-{item.sc2}</Text>
-                        </View>
+                    <View style={styles.content}>
+                        <Text style={styles.text_res}>{item.sc1}-{item.sc2}</Text>
                     </View>
                     <Image
-                        style={styles.myImage}
+                        style={styles.myImage_local}
                         source={{ uri: item.thumbnail_2 }} />
                 </View>
             </Card>
@@ -54,10 +43,10 @@ const Match = () => {
     }
     return (
         <ImageBackground source={{
-            uri: "https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=749&q=80"
+            uri: "https://images.pexels.com/photos/6071708/pexels-photo-6071708.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         }}
             style={styles.back_image}>
-            <View>
+            <View styles={{ flex: 1 }}>
 
                 <FlatList
                     data={data}
@@ -77,22 +66,42 @@ const styles = StyleSheet.create({
     },
     cardView: {
         flexDirection: "row",
-        padding: 6,
-        display:"flex"
     },
-    text: {
-        fontSize: 12,
-    }, back_image: {
+    content: {
+        marginTop:20,
+        marginRight:148,
+        marginLeft:"auto"
+    },
+    text_res: {
+        fontSize: 20,
+        fontWeight:"bold"
+    },
+    back_image: {
         width: null,
         height: null,
-        justifyContent: 'center',
         flex: 1,
         resizeMode: 'contain',
     },
-    myImage: {
+    myImage_visit: {
+        position: "relative",
         width: 60,
         height: 60,
-        borderRadius: 30
+        
+        maxWidth: 60,
+        maxHeight: 60,
+        marginTop:3,
+        left: 2,
+        marginBottom:3
+    },
+    myImage_local: {
+        position: "absolute",
+        width: 60,
+        height: 60,
+        maxWidth: 60,
+        maxHeight: 60,
+        right: 2,
+        marginBottom:3,
+        marginBottom:3
     }
 })
 export default Match
