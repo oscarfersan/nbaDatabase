@@ -10,6 +10,7 @@ var PlayerSchema = mongoose.Schema({
     draft_year:String,
     draft_number:Number,
     university:String,
+    salary:Number,
     thumbnail: String
 })
 

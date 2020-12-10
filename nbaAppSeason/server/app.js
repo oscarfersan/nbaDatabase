@@ -42,6 +42,14 @@ app.get('/draft',(req,res)=>{
         console.error(err)
     })
 })
+app.get('/game',(req,res)=>{
+    Player.find({salary:{$gt:0}})
+    .then(data=>{
+        res.send(data)
+    }).catch(err=>{
+        console.error(err)
+    })
+})
 app.get('/coach',(req,res)=>{
     const f_name = req.query.f_name
     const s_name = req.query.s_name
