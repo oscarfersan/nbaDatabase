@@ -28,22 +28,24 @@ There is no HTTP server, no frontend, and no user-facing interface in this proje
 ## Project structure
 
 ```
-nba-digest/
-├── src/
-│   ├── jobs/
-│   │   └── dailyDigest.ts       # Orchestrates the full flow
-│   ├── services/
-│   │   ├── nba.ts               # balldontlie API calls
-│   │   ├── email.ts             # Email composition and sending
-│   │   └── subscribers.ts       # Subscriber CRUD against SQLite
-│   ├── templates/
-│   │   └── digest.html.ts       # HTML email template function
-│   ├── db/
-│   │   └── index.ts             # SQLite init and migrations
-│   └── index.ts                 # Entry point, starts the cron
-├── .env
-├── tsconfig.json
-└── package.json
+nbaDatabase/
+├── AGENTS.md
+└── nbaDigest/
+    ├── src/
+    │   ├── jobs/
+    │   │   └── dailyDigest.ts       # Orchestrates the full flow
+    │   ├── services/
+    │   │   ├── nba.ts               # balldontlie API calls
+    │   │   ├── email.ts             # Email composition and sending
+    │   │   └── subscribers.ts       # Subscriber CRUD against SQLite
+    │   ├── templates/
+    │   │   └── digest.html.ts       # HTML email template function
+    │   ├── db/
+    │   │   └── index.ts             # SQLite init and migrations
+    │   └── index.ts                 # Entry point, starts the cron
+    ├── .env
+    ├── tsconfig.json
+    └── package.json
 ```
 
 Do not create new top-level folders without explicit discussion.
