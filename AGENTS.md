@@ -55,14 +55,23 @@ Do not create new top-level folders without explicit discussion.
 ## Job flow
 
 ```
-Cron fires nightly (23:30 Europe/Madrid)
+Cron weekly cache job fires (Monday 00:00 UTC)
     │
     ▼
-nba.ts → did any games take place today?
+nba.ts → fetch full week games using dates[] + per_page=100 (respecting rate limit)
     │
-    ├── No games → log reason, exit without sending anything
+    ▼
+SQLite cached_games → upsert by externalId
     │
-    └── Games found → fetch results and scores
+    ▼
+Cron daily digest job fires (configured by CRON_SCHEDULE + TZ)
+    │
+    ▼
+SQLite cached_games → get games where dateTime <= now and > now - 24h (UTC window)
+    │
+    ├── No games in window → log reason, exit without sending anything
+    │
+    └── Games found → nba.ts fetch details/scores for those external ids
             │
             ▼
         digest.html.ts → build the email HTML
@@ -78,12 +87,21 @@ The job sends nothing if no games were played that day. Always log the reason fo
 
 ---
 
+## Data provider limits
+
+- balldontlie paid tier limit: **5 requests per minute**.
+- Any service logic that calls balldontlie must throttle requests to stay at or below that limit.
+- Weekly ingestion must use `per_page=100` and paginate only when needed to minimize total requests.
+
+---
+
 ## Environment variables
 
 ```env
 RESEND_API_KEY=        # Resend API key
 CRON_SCHEDULE=         # Cron expression (e.g. "30 23 * * *")
 TZ=Europe/Madrid       # Process timezone
+WEEKLY_GAMES_CRON_SCHEDULE=0 0 * * 1  # Weekly ingestion cron (always interpreted in UTC)
 ```
 
 Never hardcode env values in source code. Never commit the `.env` file.
