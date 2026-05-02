@@ -25,6 +25,12 @@ export interface Subscriber {
   created_at: string;
 }
 
+export interface CachedGame {
+  _id: string;
+  dateTime: string;
+  externalId: string;
+}
+
 export class AppError extends Error {
   constructor(public message: string, public code?: string) {
     super(message);

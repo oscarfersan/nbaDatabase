@@ -1,42 +1,40 @@
-import { fetchGamesForDate } from '../services/nba';
+import { fetchGamesByExternalIds } from '../services/nba';
 import { getActiveSubscribers } from '../services/subscribers';
+import { getCachedGamesInWindow } from '../services/cachedGames';
 import { sendDigestEmail } from '../services/email';
 import { buildDigestHtml } from '../templates/digest.html';
 
-function getYesterdayUtc(): Date {
-  const now = new Date();
-  return new Date(Date.UTC(
-    now.getUTCFullYear(),
-    now.getUTCMonth(),
-    now.getUTCDate() - 1,
-  ));
-}
-
-function toIsoDate(date: Date): string {
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(date.getUTCDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-
 export async function runDailyDigest(): Promise<void> {
-  const digestDate = getYesterdayUtc();
-  const dateStr = toIsoDate(digestDate);
+  const now = new Date();
+  const windowStart = new Date(now.getTime() - (24 * 60 * 60 * 1000));
+  const windowEnd = now;
+  const digestReferenceDate = windowStart;
 
   const formattedDate = new Intl.DateTimeFormat('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
     timeZone: 'UTC',
-  }).format(digestDate);
+  }).format(digestReferenceDate);
 
-  console.info(`[Job] Starting NBA Daily Digest for ${dateStr}`);
+  console.info(
+    `[Job] Starting NBA Daily Digest for window ${windowStart.toISOString()} -> ${windowEnd.toISOString()}`
+  );
 
   try {
-    const games = await fetchGamesForDate(dateStr);
+    const cachedGames = getCachedGamesInWindow(windowStart, windowEnd);
 
+    if (cachedGames.length === 0) {
+      console.info(
+        `[Job] No cached games found in the window ${windowStart.toISOString()} -> ${windowEnd.toISOString()}. Exiting.`
+      );
+      return;
+    }
+
+    const externalIds = cachedGames.map(game => game.externalId);
+    const games = await fetchGamesByExternalIds(externalIds);
     if (games.length === 0) {
-      console.info(`[Job] No games found for ${dateStr}. Exiting.`);
+      console.info(`[Job] Cached games exist but API returned no details. Exiting.`);
       return;
     }
 

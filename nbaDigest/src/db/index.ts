@@ -21,8 +21,22 @@ try {
       created_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
   `);
-} catch (error: any) {
-  throw new DatabaseError(`Failed to initialize database: ${error.message}`);
+
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS cached_games (
+      _id TEXT PRIMARY KEY,
+      dateTime TEXT NOT NULL,
+      externalId TEXT NOT NULL UNIQUE
+    );
+  `);
+
+  db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_cached_games_dateTime
+    ON cached_games(dateTime);
+  `);
+} catch (error: unknown) {
+  const message = error instanceof Error ? error.message : String(error);
+  throw new DatabaseError(`Failed to initialize database: ${message}`);
 }
 
 export { db };
