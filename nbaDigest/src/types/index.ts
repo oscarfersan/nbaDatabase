@@ -19,7 +19,7 @@ export interface Game {
 }
 
 export interface Subscriber {
-  id: number;
+  _id: string; // UUID v7
   email: string;
   status: 'active' | 'unsubscribed';
   created_at: string;
