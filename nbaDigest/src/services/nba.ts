@@ -17,6 +17,10 @@ interface GamesApiResponse {
   meta?: GamesApiMeta;
 }
 
+interface GameApiResponse {
+  data: Game;
+}
+
 function getApiKey(): string {
   const apiKey = process.env.DATA_PROVIDER_API_KEY;
   if (!apiKey) {
@@ -50,6 +54,15 @@ function isGamesApiResponse(value: unknown): value is GamesApiResponse {
   return Array.isArray(candidate.data);
 }
 
+function isGameApiResponse(value: unknown): value is GameApiResponse {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  const candidate = value as Partial<GameApiResponse>;
+  return typeof candidate.data === 'object' && candidate.data !== null;
+}
+
 async function fetchGamesWithParams(params: URLSearchParams): Promise<GamesApiResponse> {
   await enforceRateLimit();
 
@@ -72,6 +85,30 @@ async function fetchGamesWithParams(params: URLSearchParams): Promise<GamesApiRe
   }
 
   return payload;
+}
+
+async function fetchGameById(externalId: string): Promise<Game> {
+  await enforceRateLimit();
+
+  const apiKey = getApiKey();
+  const url = `${BASE_URL}/${externalId}`;
+  const response = await fetch(url, {
+    headers: {
+      Authorization: apiKey,
+    },
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new NbaApiError(`balldontlie API error: ${response.status} - ${errorText}`);
+  }
+
+  const payload: unknown = await response.json();
+  if (!isGameApiResponse(payload)) {
+    throw new NbaApiError('Invalid balldontlie API response shape');
+  }
+
+  return payload.data;
 }
 
 export async function fetchGamesForDate(date: string): Promise<Game[]> {
@@ -141,19 +178,11 @@ export async function fetchGamesByExternalIds(externalIds: string[]): Promise<Ga
   }
 
   try {
-    const chunkSize = DEFAULT_PER_PAGE;
     const result: Game[] = [];
 
-    for (let offset = 0; offset < uniqueExternalIds.length; offset += chunkSize) {
-      const batch = uniqueExternalIds.slice(offset, offset + chunkSize);
-      const params = new URLSearchParams();
-      params.set('per_page', String(DEFAULT_PER_PAGE));
-      for (const externalId of batch) {
-        params.append('ids[]', externalId);
-      }
-
-      const data = await fetchGamesWithParams(params);
-      result.push(...data.data);
+    for (const externalId of uniqueExternalIds) {
+      const game = await fetchGameById(externalId);
+      result.push(game);
     }
 
     return result;

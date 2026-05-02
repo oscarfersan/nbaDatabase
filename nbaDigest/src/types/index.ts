@@ -11,6 +11,7 @@ export interface Team {
 export interface Game {
   id: number;
   date: string;
+  datetime: string;
   home_team_score: number;
   visitor_team_score: number;
   home_team: Team;

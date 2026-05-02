@@ -35,10 +35,10 @@ function getCurrentWeekDatesUtc(): string[] {
   return dates;
 }
 
-function mapToCachedGames(rawGames: { id: number; date: string }[]): CachedGame[] {
+function mapToCachedGames(rawGames: { id: number; datetime: string }[]): CachedGame[] {
   return rawGames.map(game => ({
     _id: uuidv7(),
-    dateTime: new Date(game.date).toISOString(),
+    dateTime: new Date(game.datetime).toISOString(),
     externalId: String(game.id),
   }));
 }
