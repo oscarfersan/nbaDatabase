@@ -1,8 +1,25 @@
 import { fetchGamesByExternalIds } from '../services/nba';
 import { getActiveSubscribers } from '../services/subscribers';
-import { getCachedGamesInWindow } from '../services/cachedGames';
+import { deleteCachedGamesBefore, getCachedGamesInWindow } from '../services/cachedGames';
 import { sendDigestEmail } from '../services/email';
 import { buildDigestHtml } from '../templates/digest.html';
+
+function resolveCachedGamesTtlDays(): number {
+  const rawTtl = process.env.CACHED_GAMES_TTL_DAYS;
+  if (!rawTtl) {
+    return 30;
+  }
+
+  const parsed = Number.parseInt(rawTtl, 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    console.warn(
+      `[Job] Invalid CACHED_GAMES_TTL_DAYS value "${rawTtl}", falling back to 30 days.`
+    );
+    return 30;
+  }
+
+  return parsed;
+}
 
 export async function runDailyDigest(): Promise<void> {
   const now = new Date();
@@ -22,6 +39,13 @@ export async function runDailyDigest(): Promise<void> {
   );
 
   try {
+    const ttlDays = resolveCachedGamesTtlDays();
+    const cutoff = new Date(now.getTime() - (ttlDays * 24 * 60 * 60 * 1000));
+    const deletedCount = deleteCachedGamesBefore(cutoff);
+    if (deletedCount > 0) {
+      console.info(`[Job] Deleted ${deletedCount} cached games older than ${ttlDays} days.`);
+    }
+
     const cachedGames = getCachedGamesInWindow(windowStart, windowEnd);
 
     if (cachedGames.length === 0) {

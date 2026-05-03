@@ -1,6 +1,6 @@
 import { v7 as uuidv7 } from 'uuid';
 import { fetchGamesForDates } from '../services/nba';
-import { upsertCachedGames } from '../services/cachedGames';
+import { deleteCachedGamesBefore, upsertCachedGames } from '../services/cachedGames';
 import { CachedGame } from '../types/index';
 
 function toIsoDate(date: Date): string {
@@ -43,6 +43,23 @@ function mapToCachedGames(rawGames: { id: number; datetime: string }[]): CachedG
   }));
 }
 
+function resolveCachedGamesTtlDays(): number {
+  const rawTtl = process.env.CACHED_GAMES_TTL_DAYS;
+  if (!rawTtl) {
+    return 30;
+  }
+
+  const parsed = Number.parseInt(rawTtl, 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) {
+    console.warn(
+      `[Weekly Job] Invalid CACHED_GAMES_TTL_DAYS value "${rawTtl}", falling back to 30 days.`
+    );
+    return 30;
+  }
+
+  return parsed;
+}
+
 export async function runWeeklyGamesIngestion(): Promise<void> {
   const weekDates = getCurrentWeekDatesUtc();
   const weekStart = `${weekDates[0]}T00:00:00.000Z`;
@@ -51,6 +68,15 @@ export async function runWeeklyGamesIngestion(): Promise<void> {
   console.info(`[Weekly Job] Starting NBA weekly ingestion for ${weekStart} -> ${weekEnd}`);
 
   try {
+    const ttlDays = resolveCachedGamesTtlDays();
+    const cutoff = new Date(Date.now() - (ttlDays * 24 * 60 * 60 * 1000));
+    const deletedCount = deleteCachedGamesBefore(cutoff);
+    if (deletedCount > 0) {
+      console.info(
+        `[Weekly Job] Deleted ${deletedCount} cached games older than ${ttlDays} days.`
+      );
+    }
+
     const games = await fetchGamesForDates(weekDates);
 
     if (games.length === 0) {
