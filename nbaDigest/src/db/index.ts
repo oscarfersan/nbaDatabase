@@ -1,14 +1,22 @@
 import Database from 'better-sqlite3';
+import fs from 'fs';
 import path from 'path';
 import { v7 as uuidv7 } from 'uuid';
 import { DatabaseError } from '../types';
 
-// Points to nbaDatabase/database.sqlite (root of the monorepo)
-const dbPath = path.join(__dirname, '../../../database.sqlite');
+const envDbPath = process.env.SQLITE_PATH?.trim();
+const defaultDbPath = path.join(__dirname, '../../../database.sqlite');
+const resolvedDbPath = envDbPath
+  ? (path.isAbsolute(envDbPath) ? envDbPath : path.join(process.cwd(), envDbPath))
+  : defaultDbPath;
+
+const dbPath = resolvedDbPath;
+const dbDir = path.dirname(dbPath);
 
 let db: Database.Database;
 
 try {
+  fs.mkdirSync(dbDir, { recursive: true });
   db = new Database(dbPath);
   
   db.pragma('journal_mode = WAL');

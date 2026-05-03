@@ -42,3 +42,18 @@ export function getCachedGamesInWindow(windowStart: Date, windowEnd: Date): Cach
     throw new DatabaseError(`Failed to query cached games: ${message}`);
   }
 }
+
+export function deleteCachedGamesBefore(cutoff: Date): number {
+  try {
+    const stmt = db.prepare(`
+      DELETE FROM cached_games
+      WHERE dateTime < ?
+    `);
+
+    const result = stmt.run(cutoff.toISOString());
+    return result.changes;
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new DatabaseError(`Failed to delete cached games: ${message}`);
+  }
+}
